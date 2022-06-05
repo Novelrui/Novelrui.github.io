@@ -354,8 +354,8 @@ h3.w3l_head, h3.agileits-title, h3.agile-title, h3.agile-contact, div#wthreeskil
 }
 .text-w3l {
     float: right;
-    width: 76%;
-    padding: 1.5em 0em;
+    width: 85%;
+    /* padding: 1.5em 0em; */
 }
 /*-- //About-ends-here --*/
 
@@ -1087,7 +1087,7 @@ textarea {
 		font-size: 18px;
 	}
 	.navbar-default {
-		width: 85%;
+		width: 90%;
 	}
 	.banner-info-w3l h2 {
 		font-size: 2.3em;

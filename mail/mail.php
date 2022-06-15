@@ -5,7 +5,7 @@ $stm= $mailsubject."".$mailbody;
 require("smtp.php");
 ##########################################
 $smtpserver = "smtp.qq.com";//SMTP服务器
-$smtpserverport = 25;//SMTP服务器端口
+$smtpserverport = 587;//SMTP服务器端口
 $smtpusermail = "2274976814@qq.com";//SMTP服务器的用户邮箱
 $smtpemailto = "2274976814@qq.com";//发送给谁
 $smtpuser = "2274976814@qq.com";//SMTP服务器的用户帐号

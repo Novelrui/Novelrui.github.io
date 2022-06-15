@@ -1,18 +1,20 @@
-﻿<?php
-require_once("mail.inc.php");
-$smtp = new smtp("smtp.qq.com",465,true,"2274976814@qq.com","emuifckbgbotebhf","2274976814@qq.com");//发件人信箱信息
-$smtp->debug = false;//是否显示发送的调试信息 FALSE or TRUE
-$mailto="2274976814@qq.com";//收件人信箱
-$mailsubject="web Message";
-$mailfrom="HR";
-$mailbody="Name=".$_GET["q1"]."<br>";
-$mailbody=$mailbody."Phone No=".$_GET["q2"]."<br>";
-$mailbody=$mailbody."email=".$_GET["email"]."<br>";
-$mailbody=$mailbody."Message=".$_GET["q3"]."<br>";
-//其他的表单项目以此类推
-$mailtype 		= 	"HTML";//邮件格式（HTML/TXT）,TXT为文本邮件
-$mailsubject 	= 	'=?UTF-8?B?'.base64_encode($mailsubject).'?=';//邮件主题
-$mailfrom  	= 	'=?UTF-8?B?'.base64_encode($mailfrom).'?=';//发件人
-$smtp->sendmail($mailto, $mailfrom, $mailsubject, $mailbody, $mailtype);
-echo "<script language=\"JavaScript\">alert(\"Send success.\");</script>"; exit();
+<?php
+$mailsubject=$_POST['mailsubject'];
+$mailbody=$_POST['mailbody'];
+$stm= $mailsubject."".$mailbody;
+require("smtp.php");
+##########################################
+$smtpserver = "smtp.qq.com";//SMTP服务器
+$smtpserverport = 25;//SMTP服务器端口
+$smtpusermail = "2274976814@qq.com";//SMTP服务器的用户邮箱
+$smtpemailto = "2274976814@qq.com";//发送给谁
+$smtpuser = "2274976814@qq.com";//SMTP服务器的用户帐号
+$smtppass = "emuifckbgbotebhf";//SMTP服务器的用户密码
+$mailsubject =$mailsubject; //邮件主题
+$mailbody = $stm;//邮件内容
+$mailtype = "HTML";//邮件格式（HTML/TXT）,TXT为文本邮件
+$smtp = new smtp($smtpserver,$smtpserverport,true,$smtpuser,$smtppass);//这里面的一个true是表示使用身份验证,否则不使用身份验证.
+$smtp->debug = TRUE;//是否显示发送的调试信息
+$smtp->sendmail($smtpemailto, $smtpusermail, $mailsubject, $mailbody, $mailtype);
+echo "提交成功";
 ?>

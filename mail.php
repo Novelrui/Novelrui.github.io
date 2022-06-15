@@ -1,5 +1,5 @@
 ﻿<?php
-require_once("/mail.inc.php");
+require_once("mail.inc.php");
 $smtp = new smtp("smtp.qq.com",465,true,"2274976814@qq.com","emuifckbgbotebhf","2274976814@qq.com");//发件人信箱信息
 $smtp->debug = false;//是否显示发送的调试信息 FALSE or TRUE
 $mailto="2274976814@qq.com";//收件人信箱

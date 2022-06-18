@@ -378,12 +378,12 @@
 			</div>    
 			<div class="contact-right-w3l">
 				<div class="contact-form">
-					<form name="form1" action="mail/mail.php" method="post">
-						<input placeholder="NAME" name="q1" type="text" required="" />
-						<input placeholder="LASTNAME" name="mailsubject" type="text" required="" />
-						<input placeholder="E-MAIL" name="mailto" type="email" required="" />
-						<textarea placeholder="TYPE YOUR MESSAGE......" name="mailbody" required=""></textarea>
-						<input type="Submit" value="Send" name="submit">
+					<form action="#" method="post">
+						<input id="firstname" placeholder="NAME" name="firstname" type="text" required="" />
+						<input id="lastname" placeholder="LASTNAME" name="lastname" type="text" required="" />
+						<input id="useremail" placeholder="E-MAIL" name="useremail" type="email" required="" />
+						<textarea id="message" placeholder="TYPE YOUR MESSAGE......" name="message" required=""></textarea>
+						<input id="send" type="submit" value="Submit" name="login" onclick="return false;">
 					</form>
 				</div> 
 			</div> 
@@ -405,10 +405,37 @@
 
 	
 	<!-- Custom-JavaScript-Files -->
+	
 
 		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script> <!-- Default-JavaScript-File -->
 		<script type="text/javascript" src="js/bootstrap.js"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
 	
+		
+		<!--for-send email-->
+		<script>
+			$(function(){
+				$('#send').click(function(){
+					var firstname = $('#firstname').val();
+					var lastname = $('#lastname').val();
+					var useremail = $('#useremail').val();
+					var message = $('#message').val();
+					$.ajax({
+						type:"post",
+						url:"mail/mail.php",
+						data:{"firstname":firstname, "lastname":lastname, "useremail":useremail,"message":message},
+						dataType: "text",
+						success: function(msg){
+							console.log("success: "+msg);    //控制台输出
+						},
+						error:function(msg){
+							console.log(msg);
+						}
+					})
+				})
+			})
+		</script>
+	
+		
 		<!-- for-projects -->
 			<!-- swipe box js -->
 			<script src="js/jquery.swipebox.min.js"></script> 
